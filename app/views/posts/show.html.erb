@@ -1,2 +1,33 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="card card-top" style="width: 35rem;">
+      <div class="card-body">
+        <br>
+        <% @post.photos.each do |photo| %>
+          <%= cl_image_tag photo.key %>
+        <% end %>
+        <div class="d-block fs-3">
+          <strong> <%= "Dirección:" %> </strong> <%= @post.address %>
+        </div>
+        <div class="d-block fs-3">
+          <strong> <%= "descripción:" %> </strong> <%= @post.description %>
+        </div>
+        <div class="d-block fs-3">
+          <strong> <%= "Recompensa:" %> </strong> <%= @post.reward ? 'Si' : 'No' %>
+        </div>
+        <div class="d-block fs-3">
+          <strong> <%= "Estado:" %> </strong> <%= @post.status %>
+        </div>
+        <br>
+        <div class="d-flex ">
+          <% if current_user.present? %>
+            <% if current_user.id == @post.user_id %>
+              <%= button_to "Delete plan", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
+              <%= link_to "Edit", edit_post_path(@post), class: "btn btn-danger m-1" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
