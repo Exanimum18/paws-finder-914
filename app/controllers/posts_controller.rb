@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @posts = Post.all
+    if params[:query].present?
+      @posts = Post.search_by_description_and_address_and_title(params[:query])
+    else
+      @posts = Post.all
+    end
   end
 
   def new

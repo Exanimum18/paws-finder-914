@@ -1,4 +1,11 @@
 <div class="container mt-5">
+  <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find an animal"%>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
   <div class="row">
     <div class="col-md-4">
       <% @posts.each do |post| %>
