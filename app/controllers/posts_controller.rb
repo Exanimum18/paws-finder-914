@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-
   def index
     @posts = Post.all
   end
@@ -10,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    set_post
   end
 
   def create
@@ -24,17 +24,31 @@ class PostsController < ApplicationController
   end
 
   def edit
+    set_post
   end
 
   def update
+    set_post
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    set_post
+    @post.destroy
+    redirect_to root_path
   end
 
   private
 
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
   def post_params
-    params.require(:post).permit(:address, :description, :photos)
+    params.require(:post).permit(:address, :description, :reward, :animal_id, photos: [] )
   end
 end
