@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @animal = Animal.all
   end
 
   def show
@@ -19,7 +20,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.animal_id = 1
     if @post.save
       redirect_to root_path
     else
@@ -53,6 +53,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:address, :description, :reward, :animal_id, photos: [] )
+    params.require(:post).permit(:title, :address, :description, :reward, :animal_id, photos: [] )
   end
 end

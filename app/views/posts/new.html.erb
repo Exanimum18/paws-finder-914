@@ -4,8 +4,10 @@
       <div class="bg-white rounded p-3 shadow">
         <h3>Create a new post</h3>
         <%= simple_form_for @post do |f| %>
+          <%= f.input :title %>
           <%= f.input :address %>
           <%= f.input :description %>
+          <%= f.association :animal, label_method: :specie %>
           <%= f.input :reward,
             input_html: { autocomplete: "Recompensa?" }%>
           <%= f.input :photos, as: :file, input_html: {multiple: true} %>

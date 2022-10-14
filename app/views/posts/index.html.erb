@@ -1,14 +1,14 @@
 <div class="container mt-5">
 
-  <%= link_to "Publica tu peludo", new_post_path, class: "btn btn-danger" %>
-
   <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
       placeholder: "Find an animal"%>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= submit_tag "Search", class: "btn btn-danger" %>
   <% end %>
+
+  <%= link_to "Publica tu peludo", new_post_path, class: "btn btn-danger" %>
 
   <div class="row">
     <div class="col-md-4">
@@ -21,6 +21,8 @@
               <% end %>
             <% end %>
           <% end %>
+          <p> <%= post.title %> </p>
+          <p> <%= Animal.find(post.animal_id).specie %> </p>
           <p> <%= post.address %> </p>
           <p> <%= post.description %> </p>
           <p> <%= post.reward ? 'Si' : 'No' %> </p>
