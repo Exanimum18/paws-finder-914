@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :set_review, only: [:update, :destroy]
 
   def create
     @review = Review.new(review_params)
@@ -11,15 +12,15 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def edit
-    set_review
-  end
-
   def update
+    if @review.update(review_params)
+      redirect_to post_path(@review.post)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    set_review
     @review.destroy
     redirect_to post_path(@review.post)
   end
