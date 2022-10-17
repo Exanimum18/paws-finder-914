@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
     if params[:query].present?
       @posts = Post.search_by_description_and_address_and_title(params[:query])
@@ -15,6 +16,7 @@ class PostsController < ApplicationController
 
   def show
     set_post
+    @review = Review.new(post: @post)
   end
 
   def create

@@ -30,4 +30,33 @@
       </div>
     </div>
   </div>
+
+  <div class="row mt-5 mr-1">
+    <div class="col-12 col-sm-6">
+      <h3>Reviews</h3>
+      <% if @post.reviews.empty? %>
+        <small><em class="text-muted">Be the first one to review this post</em></small>
+      <% end %>
+      <% @post.reviews.each do |review| %>
+        <div>
+          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+          <p class="mb-0"><%= review.content %></p>
+          <div class="d-flex">
+            <%= link_to "Edit", edit_review_path(review), class: "btn btn-danger m-1" %>
+            <%= button_to "Delete Review", review_path(review), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="bg-white rounded p-3">
+        <h5>Add your review</h5>
+        <%= simple_form_for [@post, @review] do |f| %>
+          <%= f.input :content, placeholder: "Add your review here..." %>
+          <%= f.submit class:"btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
