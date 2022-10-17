@@ -15,8 +15,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    set_post
     @review = Review.new(post: @post)
+    @edit = false
   end
 
   def create
@@ -30,11 +30,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    set_post
   end
 
   def update
-    set_post
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
@@ -43,7 +41,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    set_post
     @post.destroy
     redirect_to root_path
   end
