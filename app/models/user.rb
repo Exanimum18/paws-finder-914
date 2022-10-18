@@ -12,6 +12,7 @@
 #  updated_at             :datetime         not null
 #
 class User < ApplicationRecord
+  has_many :reviews
   has_many :posts
   has_one_attached :photo
   # Include default devise modules. Others available are:

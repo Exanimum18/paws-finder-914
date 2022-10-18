@@ -43,11 +43,6 @@ user5.save
 puts "Creando especies de animales..."
 animal = Animal.create!(specie: "Perro")
 animal1 = Animal.create!(specie: "Gato")
-# animal2 = Animal.create!(specie: "Gato")
-# animal3 = Animal.create!(specie: "Perro")
-# animal4 = Animal.create!(specie: "Perro")
-# animal5 = Animal.create!(specie: "Perro")
-
 
 puts "Creando posts..."
 post = Post.new(user_id: user.id, animal_id: animal.id, address: "Cl. 25 #73-28", description: "Se me perdio mi perro la noche del 11 de octubre en el parque cerca a la carrera 72 en Belén Sanbernardo.", post_type: true, status: "Contactado", reward: true)
@@ -81,9 +76,9 @@ post5.photos.attach(io: animal_photo5, filename: "perro3.png", content_type: "im
 post5.save
 
 puts "Creando reviews..."
-review = Review.create!(post_id: post.id, content: "Estoy sumamente agradecida con la comunidad en Paws finder por ayudarme a encontrar a Dolly")
-review1 = Review.create!(post_id: post1.id, content: "Cuando mi gatito se perdió hace unos días estabamos muy angustiados sin saber que hacer, dimos por casualidad con ésta página y luego de unos días vimos fotos de nuestro bebe en el barrio contiguo")
-review2 = Review.create!(post_id: post2.id, content: "Tengo un centro de rescate animal, encontramos uno con esa descripción, creo que deberian venir a verlo")
-review3 = Review.create!(post_id: post3.id, content: "Hola, creo que he visto a ese perrito en el granero el parquesito, frente al parque Belén San Bernardo")
-review4 = Review.create!(post_id: post4.id, content: "Ay!!!, espero que la encuentres rápido amiga... 😿🙏")
-review5 = Review.create!(post_id: post5.id, content: "Hola, ese peludito es mío, a que número me puedo contactar contigo?, estamos desesperados!!! 😓")
+review = Review.create!(post_id: post.id, user_id: user.id , content: "Estoy sumamente agradecida con la comunidad en Paws finder por ayudarme a encontrar a Dolly")
+review1 = Review.create!(post_id: post1.id, user_id: user1.id , content: "Cuando mi gatito se perdió hace unos días estabamos muy angustiados sin saber que hacer, dimos por casualidad con ésta página y luego de unos días vimos fotos de nuestro bebe en el barrio contiguo")
+review2 = Review.create!(post_id: post2.id , user_id: user2.id , content: "Tengo un centro de rescate animal, encontramos uno con esa descripción, creo que deberian venir a verlo")
+review3 = Review.create!(post_id: post3.id , user_id: user3.id , content: "Hola, creo que he visto a ese perrito en el granero el parquesito, frente al parque Belén San Bernardo")
+review4 = Review.create!(post_id: post4.id , user_id: user3.id, content: "Ay!!!, espero que la encuentres rápido amiga... 😿🙏")
+review5 = Review.create!(post_id: post5.id, user_id: user2.id,  content: "Hola, ese peludito es mío, a que número me puedo contactar contigo?, estamos desesperados!!! 😓")

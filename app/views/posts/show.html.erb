@@ -22,7 +22,7 @@
         <div class="d-flex ">
           <% if current_user.present? %>
             <% if current_user.id == @post.user_id %>
-              <%= button_to "Delete plan", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
+              <%= button_to "Delete", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
               <%= link_to "Edit", edit_post_path(@post), class: "btn btn-danger m-1" %>
             <% end %>
           <% end %>
@@ -39,4 +39,50 @@
       </div>
     </div>
   </div>
+
+  <div class="row mt-5 mr-1">
+    <div class="col-12 col-sm-6">
+      <h3>Reviews</h3>
+      <% if @post.reviews.empty? %>
+        <small><em class="text-muted">Be the first one to review this post</em></small>
+      <% end %>
+      <% @post.reviews.each do |review| %>
+        <div>
+          <p class="mb-0"><%= review.content %></p>
+          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+          <div class="d-flex">
+            <% if current_user.present? %>
+              <% if current_user.id == review.user_id %>
+                <%= link_to "Edit", edit_review_path(review), class: "btn btn-danger m-1", onclick: "showContent()" %>
+                <%= button_to "Delete", review_path(review), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
+              <% end %>
+            <% end %>
+          </div>
+          <div id= "content" style= "display: none">
+            <%= simple_form_for review do |f| %>
+              <%= f.input :content%>
+              <%= f.submit class:"btn btn-danger" %>
+            <% end %>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="bg-white rounded p-3">
+        <h5>Add your review</h5>
+        <%= simple_form_for [@post, @review] do |f| %>
+          <%= f.input :content, placeholder: "Add your review here..." %>
+          <%= f.submit class:"btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  function showContent() {
+    event.preventDefault()
+    $("#content").show()
+  }
+</script>
