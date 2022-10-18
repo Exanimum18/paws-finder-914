@@ -15,8 +15,19 @@ class PostsController < ApplicationController
   end
 
   def show
+
+    @posts = Post.all
+    @markers = @posts.geocoded.map do |post|
+      {
+        lat: post.latitude,
+        lng: post.longitude
+      }
+    end
+    set_post
+
     @review = Review.new(post: @post)
     @edit = false
+
   end
 
   def create
