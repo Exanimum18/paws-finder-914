@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @post = Post.find(params[:post_id])
     @review.post = @post
+    @review.user_id = current_user.id
     if @review.save
       redirect_to post_path(@post)
     else
