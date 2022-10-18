@@ -22,7 +22,7 @@
         <div class="d-flex ">
           <% if current_user.present? %>
             <% if current_user.id == @post.user_id %>
-              <%= button_to "Delete plan", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
+              <%= button_to "Delete", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
               <%= link_to "Edit", edit_post_path(@post), class: "btn btn-danger m-1" %>
             <% end %>
           <% end %>
@@ -42,13 +42,19 @@
           <p class="mb-0"><%= review.content %></p>
           <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
           <div class="d-flex">
-            <%= link_to "Edit", edit_review_path(review), class: "btn btn-danger m-1" %>
-            <%= button_to "Delete Review", review_path(review), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
+            <% if current_user.present? %>
+              <% if current_user.id == review.post.user_id %>
+                <%= link_to "Edit", edit_review_path(review), class: "btn btn-danger m-1", onclick: "showContent()" %>
+                <%= button_to "Delete", review_path(review), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
+              <% end %>
+            <% end %>
           </div>
-          <%= simple_form_for review do |f| %>
-            <%= f.input :content%>
-            <%= f.submit class:"btn btn-danger" %>
-          <% end %>
+          <div id= "content" style= "display: none">
+            <%= simple_form_for review do |f| %>
+              <%= f.input :content%>
+              <%= f.submit class:"btn btn-danger" %>
+            <% end %>
+          </div>
         </div>
         <hr>
       <% end %>
@@ -64,3 +70,10 @@
     </div>
   </div>
 </div>
+
+<script>
+  function showContent() {
+    event.preventDefault()
+    $("#content").show()
+  }
+</script>
