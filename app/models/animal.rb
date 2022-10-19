@@ -9,6 +9,8 @@
 #
 class Animal < ApplicationRecord
   has_many :posts
+  include PgSearch::Model
+  multisearchable against: [:specie]
   # enum specie: {
   #   'perro' => 1, 'gato' => 0
   #  }
