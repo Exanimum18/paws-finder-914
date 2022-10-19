@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   def index
     if params[:query].present?
-      @results = PgSearch.multisearch(params[:query])
+      @posts = Post.search_by_description_and_address_and_title(params[:query])
     else
       @posts = Post.all
     end

@@ -9,5 +9,6 @@
 #  updated_at :datetime         not null
 #
 class Review < ApplicationRecord
+  belongs_to :user
   belongs_to :post
 end

@@ -15,11 +15,9 @@
       <% @posts.each do |post| %>
         <div class="card" style="width: 20rem ">
           <% if post.photos.attached?%>
-            <% post.photos.each do |photo| %>
               <%= link_to post_path(post) do %>
                 <%= cl_image_tag post.photos.first.key, height: 300, width: 400, crop: :fill %>
               <% end %>
-            <% end %>
           <% end %>
           <p> <%= post.title %> </p>
           <p> <%= Animal.find(post.animal_id).specie %> </p>
