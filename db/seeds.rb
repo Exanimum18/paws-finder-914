@@ -65,14 +65,14 @@ animal_photo3 = URI.open("https://images.pexels.com/photos/1390784/pexels-photo-
 post3.photos.attach(io: animal_photo3, filename: "perro1.png", content_type: "img/png")
 post3.save
 
-post4 = Post.new(user_id: user4.id, animal_id: animal.id, address: "Cl. 18 #70-25", description: "Mi gatita salíó de casa y no ha regresado, estamos muy angustiados. 😢 Sucedió en la Cl 18 Belén las playas, el 16 de octubre", post_type: true, status: "Contactado", reward: true)
+post4 = Post.new(user_id: user4.id, animal_id: animal1.id, address: "Cl. 18 #70-25", description: "Mi gatita salíó de casa y no ha regresado, estamos muy angustiados. 😢 Sucedió en la Cl 18 Belén las playas, el 16 de octubre", post_type: true, status: "Contactado", reward: true)
 animal_photo4 = URI.open("https://images.pexels.com/photos/1521306/pexels-photo-1521306.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
-post4.photos.attach(io: animal_photo4, filename: "perro2.png", content_type: "img/png")
+post4.photos.attach(io: animal_photo4, filename: "gato2.png", content_type: "img/png")
 post4.save
 
 post5 = Post.new(user_id: user5.id, animal_id: animal.id, address: "Cl. 16 #75-6", description: "Se encontro este hermoso Yorki en la Cra. 70, cerca al Parque Juan Pablo II, se encuentra bien de salud.", post_type: false, status: "Encontrado", reward: false)
 animal_photo5 = URI.open("https://images.pexels.com/photos/1420405/pexels-photo-1420405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
-post5.photos.attach(io: animal_photo5, filename: "perro3.png", content_type: "img/png")
+post5.photos.attach(io: animal_photo5, filename: "perro2.png", content_type: "img/png")
 post5.save
 
 puts "Creando reviews..."
