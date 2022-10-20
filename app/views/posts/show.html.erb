@@ -39,18 +39,19 @@
       <% end %>
       <% @post.reviews.each do |review| %>
         <div>
-          <p class="mb-0"><%= review.content %></p>
+          <p class="mb-0"><%= review.content %> <%= review.user_id %></p>
+          <p> <%= "current_user: #{current_user.id}" %> </p>
           <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
           <div class="d-flex">
             <% if current_user.present? %>
-              <% if current_user.id == review.user_id %>
-                <%= link_to "Edit", edit_review_path(review), class: "btn btn-danger m-1", onclick: "showContent()" %>
+              <% if current_user == review.user %>
+                <span id= "btn-<%= review.id %>">  <%= link_to "Edit", post_review_path(review), class: 'btn btn-danger m-1 ', onclick: "showContent()" %> </span>
                 <%= button_to "Delete", review_path(review), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
               <% end %>
             <% end %>
           </div>
-          <div id= "content" style= "display: none">
-            <%= simple_form_for review do |f| %>
+          <div id= "content-<%= review.id %>" style= "display: none">
+            <%= simple_form_for [@post, review], method: :put, url: post_review_path(@post, review) do |f| %>
               <%= f.input :content%>
               <%= f.submit class:"btn btn-danger" %>
             <% end %>
@@ -73,7 +74,8 @@
 
 <script>
   function showContent() {
+    const id = event.currentTarget.href.split("/")[4]
     event.preventDefault()
-    $("#content").show()
+    $(`#content-${id}`).show()
   }
 </script>
