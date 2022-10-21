@@ -1,6 +1,6 @@
 .user-form{
   height: 500px;
-  width: 500px;
+  width: 600px;
   background-color: transparent;
   margin-top: 70px;
   /* From https://css.glass */
@@ -22,7 +22,7 @@
   background-image: url("https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100vh - 55px);
+  height: 68.4vh;
   margin-bottom: 0 !important;
   background-position: center;
 }
@@ -32,7 +32,7 @@
   background-image: url("https://images.pexels.com/photos/1440387/pexels-photo-1440387.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100vh - 55px);
+  height: 68.4vh;
   margin-bottom: 0 !important;
   background-position: center;
 }
@@ -42,7 +42,7 @@
   background-image: url("https://images.pexels.com/photos/8162628/pexels-photo-8162628.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100vh - 55px);
+  height: 68.4vh;
   margin-bottom: 0 !important;
   background-position: 20% 70%;
 }
@@ -73,10 +73,10 @@
 }
 
 .user-form-edit-user{
-  height: 700px;
-  width: 700px;
+  height: 650px;
+  width: 650px;
   background-color: transparent;
-  margin-top: 70px;
+  margin-top: 10px;
   /* From https://css.glass */
   background: rgba(220, 236, 229, 0.29);
   border-radius: 19% 81% 30% 70% / 78% 22% 78% 22%  ;
@@ -93,10 +93,10 @@
 
 .background-edit-user {
   /* The image used */
-  background-image: url("https://images.pexels.com/photos/3628100/pexels-photo-3628100.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url("https://images.pexels.com/photos/1636295/pexels-photo-1636295.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100vh - 55px);
+  height: 68.4vh;
   margin-bottom: 0 !important;
   background-position: center;
 }
