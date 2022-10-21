@@ -1,2 +1,6 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<% @posts.each do |post| %>
+  <h2><%= post.description %></h2>
+
+<% end %>
