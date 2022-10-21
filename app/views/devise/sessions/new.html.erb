@@ -3,28 +3,32 @@
 
   <div class="container d-flex justify-content-center">
     <div class="user-form ">
-      <h2>Iniciar Sesión</h2>
+      <div class="glass">
+        <h2>Iniciar Sesión</h2>
 
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-        <div class="form-inputs">
-          <%= f.input :email,
-                      required: false,
-                      autofocus: true,
-                      input_html: { autocomplete: "email" } %>
-          <%= f.input :password,
-                      required: false,
-                      input_html: { autocomplete: "current-password" } %>
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-        </div>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email, label: "Correo electrónico",
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+            <%= f.input :password, label: "Contraseña",
+                        required: false,
+                        input_html: { autocomplete: "current-password" } %>
+            <%= f.input :remember_me,label:"Recordarme", as: :boolean if devise_mapping.rememberable? %>
+          </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Log in", class:"btn btn-success" %>
-        </div>
-      <% end %>
+          <div class="btn-group" role="group">
+            <div class="form-actions">
+              <%= f.button :submit, "Iniciar Sesión", class:"btn btn-success mr-1 rounded-pill" %>
+            </div>
 
-      <%= render "devise/shared/links" %>
+            <%= render "devise/shared/links" %>
+          </div>
+        <% end %>
+
+      </div>
     </div>
-
 
   </div>
 </div>

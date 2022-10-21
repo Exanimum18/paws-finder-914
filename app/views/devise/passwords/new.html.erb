@@ -2,24 +2,30 @@
   class="background-password ">
   <div class="container d-flex justify-content-center">
     <div class="user-form-forgot-password text-center">
-      <h2>¿Olvidaste tu contraseña?</h2>
+      <div class="glass">
+        <h2>¿Olvidaste tu contraseña?</h2>
 
-      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= f.error_notification %>
+        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= f.error_notification %>
 
-        <div class="form-inputs">
-          <%= f.input :email,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "email" } %>
-        </div>
+          <div class="form-inputs">
+            <%= f.input :email, label: "Correo electrónico",
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+          </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Send me reset password instructions", class:"btn btn-success" %>
-        </div>
-      <% end %>
 
-      <%= render "devise/shared/links" %>
+            <div class="form-actions">
+              <%= f.button :submit, "Enviame instrucciones para cambiar mi contraseña", class:"btn btn-success mr-1 rounded-pill" %>
+            </div>
+          <div class="btn-group" role="group">
+            <%= render "devise/shared/links" %>
+          </div>
+        <% end %>
+
+
+      </div>
     </div>
   </div>
 </div>
