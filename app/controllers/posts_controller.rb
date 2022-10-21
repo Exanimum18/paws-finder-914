@@ -55,6 +55,10 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def mis_publicaciones
+    @posts = Post.where(user_id: current_user.id)
+  end
+
   private
 
   def set_post
