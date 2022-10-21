@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     if params[:query].present?
       @posts = Post.search_by_description_and_address_and_title(params[:query])
@@ -19,13 +19,14 @@ class PostsController < ApplicationController
 
   def show
     @review = Review.new
+    @posts = Post.all
     @markers = @posts.geocoded.map do |post|
       {
-        lat: post.latitude,
-        lng: post.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {post: post})
-      }
-    end
+         lat: post.latitude,
+         lng: post.longitude,
+         info_window: render_to_string(partial: "info_window", locals: {post: post})
+       }
+     end
   end
 
   def create
@@ -52,6 +53,10 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to root_path
+  end
+
+  def mis_publicaciones
+    @posts = Post.where(user_id: current_user.id)
   end
 
   private
