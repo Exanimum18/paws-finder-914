@@ -1,18 +1,16 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-<<<<<<< HEAD
-  def index
-    @posts = Post.all
-=======
+
+
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     if params[:query].present?
       @posts = Post.search_by_description_and_address_and_title(params[:query])
     else
       @posts = Post.all
     end
->>>>>>> b6678540047b35fcaf39e6a85dc8cab7fdc821de
+
   end
 
   def new
@@ -22,13 +20,13 @@ class PostsController < ApplicationController
 
   def show
     @review = Review.new
-    @markers = @posts.geocoded.map do |post|
-      {
-        lat: post.latitude,
-        lng: post.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {post: post})
-      }
-    end
+    # @markers = @posts.geocoded.map do |post|
+    #   {
+    #     lat: post.latitude,
+    #     lng: post.longitude,
+    #     info_window: render_to_string(partial: "info_window", locals: {post: post})
+    #   }
+    # end
   end
 
   def create
