@@ -1,43 +1,37 @@
-<div class="container mt-5 ">
+<div class="container  ">
 
-<div class=" text-center">
-    <%= link_to "Publica tu peludo", new_post_path, class: "btn btn-danger" %>
+  <div class=" text-center m-5">
+      <%= link_to "Publica tu peludo", new_post_path, class: "btn btn-danger" %>
   </div>
-<br>
-  <div class="col-4 text-center">
-    <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Busca a tu peludito"%>
-      <%= submit_tag "Buscar", class: "btn btn-flat" %>
-    <% end %>
-  </div>
-
+  <br>
 
 <br>
 
+<h1 class="text-center" id="titulo"> Estos peludos buscan su casa </h1>
 
-  <div>
-      <div class="row">
-        <div class="col-md-4">
+  <div class=" d-flex mb-5 ">
+      <div class="col justify-content-between text-center">
         <% @posts.each do |post| %>
-          <div class="card" style="width: 20rem ">
+          <div class="card m-5 shadow p-3 mb-5 bg-white rounded text-center" style="width: 400px ">
             <% if post.photos.attached?%>
                 <%= link_to post_path(post) do %>
-                  <%= cl_image_tag post.photos.first.key, height: 300, width: 400, crop: :fill %>
+                  <%= cl_image_tag post.photos.first.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
                 <% end %>
             <% end %>
-            <p> <%= post.title %> </p>
+            <center>
+            <h5 class="card-title" id="titulo"> <%= post.title %> </h5>
             <p> <%= Animal.find(post.animal_id).specie %> </p>
             <p> <%= post.address %> </p>
-            <p> <%= post.description %> </p>
+            <p > <%= post.description %> </p>
             <p> <%= post.reward ? 'Si' : 'No' %> </p>
+            </center>
           </div>
         <% end %>
         </div>
-      </div>
+
   </div>
 
-
+ <div class=" text-center m-5">
+      <%= link_to "Publica tu peludo", new_post_path, class: "btn btn-danger" %>
+  </div>
 </div>
