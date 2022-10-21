@@ -20,13 +20,14 @@ class PostsController < ApplicationController
 
   def show
     @review = Review.new
-    # @markers = @posts.geocoded.map do |post|
-    #   {
-    #     lat: post.latitude,
-    #     lng: post.longitude,
-    #     info_window: render_to_string(partial: "info_window", locals: {post: post})
-    #   }
-    # end
+    @posts = Post.all
+    @markers = @posts.geocoded.map do |post|
+      {
+         lat: post.latitude,
+         lng: post.longitude,
+         info_window: render_to_string(partial: "info_window", locals: {post: post})
+       }
+     end
   end
 
   def create
@@ -53,6 +54,10 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to root_path
+  end
+
+  def mis_publicaciones
+    @posts = Post.where(user_id: current_user.id)
   end
 
   private
