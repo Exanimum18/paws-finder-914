@@ -3,9 +3,11 @@
     <div class="card card-top" style="width: 35rem;">
       <div class="card-body">
         <br>
-        <% @post.photos.each do |photo| %>
+        <div>
+          <% @post.photos.each do |photo| %>
           <%= cl_image_tag photo.key %>
-        <% end %>
+          <% end %>
+        </div>
         <div class="d-block fs-3">
           <strong> <%= "Dirección:" %> </strong> <%= @post.address %>
         </div>
