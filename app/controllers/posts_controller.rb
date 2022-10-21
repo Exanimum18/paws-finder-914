@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-
-
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -59,6 +57,7 @@ class PostsController < ApplicationController
 
   def mis_publicaciones
     @posts = Post.where(user_id: current_user.id)
+    @review = Review.new
   end
 
   private
