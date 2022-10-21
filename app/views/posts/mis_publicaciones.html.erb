@@ -1,7 +1,7 @@
 <div class="container mb-5 mt-5">
   <div class="row">
-    <% @posts.each do |post| %>
-      <div class="col-lg-4">
+    <div class="col-lg-4">
+      <% @posts.each do |post| %>
         <h5 class="card-title"><%= post.title %></h5>
         <div class="card h-100 d-flex justify-content-between" style="width: 400px ">
           <% if post.photos.attached?%>
@@ -12,7 +12,7 @@
             <p><%= post.description %></p>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
