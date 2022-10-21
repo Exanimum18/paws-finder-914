@@ -46,8 +46,7 @@
       <% end %>
       <% @post.reviews.each do |review| %>
         <div>
-          <p class="mb-0"><%= review.content %> <%= review.user_id %></p>
-          <p> <%= "current_user: #{current_user.id}" %> </p>
+          <p class="mb-0"><%= review.content %></p>
           <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
           <div class="d-flex">
             <% if current_user.present? %>
