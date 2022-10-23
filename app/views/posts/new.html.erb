@@ -2,19 +2,19 @@
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
-        <h3>Create a new post</h3>
+        <h3 id="titulo" class="text-center">Publica un peludo</h3>
         <%= simple_form_for @post do |f| %>
-          <%= f.input :title %>
-          <%= f.input :address,
+          <%= f.input :title, label: "Nombre de la publicación:" %>
+          <%= f.input :address, label: "Dirección donde se vió el peludo:",
           input_html: {data: {address_autocomplete_target: "address"}},
           wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
           %>
-          <%= f.input :description %>
+          <%= f.input :description, label: "Descripción física" %>
           <%= f.association :animal, label_method: :specie %>
-          <%= f.input :reward,
+          <%= f.input :reward, label: "Recompensa",
             input_html: { autocomplete: "Recompensa?" }%>
-          <%= f.input :photos, as: :file, input_html: {multiple: true} %>
-          <%= f.submit class: 'btn btn-primary' %>
+          <%= f.input :photos,label:"Fotos actualizadas del peludo", as: :file, input_html: {multiple: true} %>
+         <div class="text-center"> <%= f.button :submit, "Crear publicación", class: 'btn btn-danger ' %> </div>
         <% end %>
       </div>
     </div>
