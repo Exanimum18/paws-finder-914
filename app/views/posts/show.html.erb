@@ -3,7 +3,9 @@
     <div class="card card-top" style="width: 35rem;">
       <div class="card-body">
         <br>
-        <div>
+        <div class="d-block fs-3">
+          <strong> <%= "" %>  <%= @post.title %> </strong>
+        <div class="images d-flex" id="imagenes" >
           <% @post.photos.each do |photo| %>
           <%= cl_image_tag photo.key %>
           <% end %>
@@ -12,7 +14,7 @@
           <strong> <%= "Dirección:" %> </strong> <%= @post.address %>
         </div>
         <div class="d-block fs-3">
-          <strong> <%= "descripción:" %> </strong> <%= @post.description %>
+          <strong> <%= "Descripción:" %> </strong> <%= @post.description %>
         </div>
         <div class="d-block fs-3">
           <strong> <%= "Recompensa:" %> </strong> <%= @post.reward ? 'Si' : 'No' %>
@@ -30,7 +32,7 @@
           <% end %>
         </div>
 
-        <div id='map' style="width: 100%; height: 300px;"
+        <div class="map d-flex" id='map' style="width: 100%; height: 150px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
