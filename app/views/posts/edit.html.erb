@@ -2,20 +2,19 @@
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
-        <h3>Create a new post</h3>
+        <h3 id="titulo" class=" text-center">Edita tu post </h3>
         <%= simple_form_for @post do |f| %>
-          <%= f.input :address %>
-          <%= f.input :latitude %>
-          <%= f.input :longitude %>
-          <%= f.input :description %>
-          <%= f.input :reward,
+          <%= f.input :address, label: "Dirección donde se vió el peludo:"%>
+          <%= f.input :latitude, label: "Latitud" %>
+          <%= f.input :longitude, label: "Longitud" %>
+          <%= f.input :description, label: "Descripción física" %>
+          <%= f.input :reward, label: "Recompensa",
             required: true,
             autofocus: true,
             input_html: { autocomplete: "Recompensa?" }%>
-          <%= f.submit class: 'btn btn-primary' %>
+          <div class="text-center m-3"><%= f.button :submit, "Actualizar", class: 'btn btn-danger' %> </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-<footer><%= render "shared/footer" %></footer>

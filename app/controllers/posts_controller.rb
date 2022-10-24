@@ -8,7 +8,6 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
-
   end
 
   def new
