@@ -1,31 +1,42 @@
-<div class="background-edit-user">
-  <div class="container d-flex justify-content-center">
-    <div class="user-form-edit-user">
-      <div class="glass">
-        <h2>Editar Usuario</h2>
 
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <%= f.error_notification %>
+  <div class="background-edit-user">
+    <div class="container d-flex justify-content-center">
+      <div class="user-form-edit-user">
+        <div class="glass">
+          <h2 class="text-center" >Editar Usuario</h2>
 
-          <div class="form-inputs">
-            <%= f.input :email, required: true, autofocus: true %>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
 
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-            <% end %>
-            <%= f.input :current_password, label: "Contraseña actual",
-                                    hint: "Necesitamos tu contraseña actual para efectuar los cambios",
-                                    required: true,
-                                    input_html: { autocomplete: "current-password" } %>
+            <div class="form-inputs">
+              <%= f.input :email, required: true, autofocus: true %>
 
-            <%= f.input :password, label:"Contraseña",
-                        hint: "Lo puedes dejar en blanco en caso de no querer cambiar la contraseña",
-                        required: false,
-                        input_html: { autocomplete: "new-password" } %>
-            <%= f.input :password_confirmation, label: "Confirmar de contraseña",
-                        required: false,
-                        input_html: { autocomplete: "new-password" } %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
+              <%= f.input :current_password, label: "Contraseña actual",
+                                      hint: "Necesitamos tu contraseña actual para efectuar los cambios",
+                                      required: true,
+                                      input_html: { autocomplete: "current-password" } %>
 
+              <%= f.input :password, label:"Contraseña nueva",
+                          hint: "Lo puedes dejar en blanco en caso de no querer cambiar la contraseña",
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation, label: "Confirmar contraseña",
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+
+            </div>
+            <br>
+            <div class="form-actions text-center">
+              <%= f.button :submit, "Actualizar", class:"btn btn-danger text-center " %>
+            </div>
+          <% end %>
+
+          <div class="d-flex align-items-center">
+
+  <br>
           </div>
 
           <div class="form-actions">
@@ -42,8 +53,8 @@
         <div class="btn-group" role="group">
           <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro/a?" }, method: :delete, class: "buttonA mr-1" %>
           <%= link_to "regresar", :back, class: "buttonA mr-1" %>
+
         </div>
       </div>
     </div>
   </div>
-</div>
