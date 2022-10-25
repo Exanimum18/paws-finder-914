@@ -10,13 +10,18 @@
           <% end %>
         </div>
         <div class="d-block fs-4">
+           <strong> <%= @post.post_type ? 'Perdido' : 'Encontrado' %> </strong>
+        </div>
+        <div class="d-block fs-4">
           <strong> <%= "Dirección:" %> </strong> <%= @post.address %>
         </div>
         <div class="d-block fs-4">
           <strong> <%= "descripción:" %> </strong> <%= @post.description %>
         </div>
         <div class="d-block fs-4">
-          <strong> <%= "Recompensa:" %> </strong> <%= @post.reward ? 'Si' : 'No' %>
+          <% if @post.post_type == true %>
+            <strong> <%= "Recompensa:" %> </strong> <%= @post.reward ? 'Si' : 'No' %>
+          <% end %>
         </div>
         <div class="d-block fs-4">
           <strong> <%= "Estado:" %> </strong> <%= @post.status %>
