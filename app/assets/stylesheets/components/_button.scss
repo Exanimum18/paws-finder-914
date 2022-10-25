@@ -10,3 +10,11 @@
 //   background: #4D04C4;
 //   color: white;
 // }
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

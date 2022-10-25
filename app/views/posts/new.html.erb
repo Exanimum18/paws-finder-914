@@ -4,6 +4,8 @@
       <div class="bg-white rounded p-3 shadow">
         <h2  class="text-center">Publica un peludo</h2>
         <%= simple_form_for @post do |f| %>
+          #perdido = true encontrado = false
+          <%= f.input :post_type, label:"Encontrado - Perdido" %>
           <%= f.input :title, label: "Nombre de la publicación:" %>
           <%= f.input :address, label: "Dirección donde se vió el peludo:",
           input_html: {data: {address_autocomplete_target: "address"}},
