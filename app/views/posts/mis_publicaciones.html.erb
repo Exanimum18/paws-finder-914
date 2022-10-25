@@ -1,23 +1,22 @@
-<div class = "publicaciones">
-  <div class="container mb-5 mt-5">
-    <h2 class="text-center mb-3" id="titulo"> Mis publicaciones </h2>
-    <div class="row">
+
+    <div class="container mb-5 mt-5">
+    <h2 class="text-center mb-3" > Mis publicaciones </h2>
+      <div class="row">
       <div class="col-lg-4">
         <% @posts.each do |post| %>
-          <div class="card h-100 d-flex justify-content-between" style="width: 300px ">
-            <% if post.photos.attached?%>
-                <%= link_to post_path(post) do %>
-                  <%= cl_image_tag post.photos.first.key, height: 300, width: 300, crop: :fill, class: "card-img-top" %>
-                <% end %>
-            <% end %>
-            <h5 class="card-title"><%= post.title %></h5>
-            <div class="card-body">
-              <p><%= post.address %></p>
-              <p><%= post.description %></p>
+            <div class="card h-100 d-flex justify-content-between" style="width: 400px ">
+              <% if post.photos.attached?%>
+                  <%= cl_image_tag post.photos.first.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+              <h5 class="card-title"><%= post.title %></h5>
+              <div class="card-body">
+                <p><%= post.address %></p>
+                <p><%= post.description %></p>
             </div>
           </div>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+  <div class = "publicaciones">
+  </div>
