@@ -81,4 +81,3 @@ review1 = Review.create!(post_id: post1.id, user_id: user1.id , content: "Cuando
 review2 = Review.create!(post_id: post2.id , user_id: user2.id , content: "Tengo un centro de rescate animal, encontramos uno con esa descripción, creo que deberian venir a verlo")
 review3 = Review.create!(post_id: post3.id , user_id: user3.id , content: "Hola, creo que he visto a ese perrito en el granero el parquesito, frente al parque Belén San Bernardo")
 review4 = Review.create!(post_id: post4.id , user_id: user3.id, content: "Ay!!!, espero que la encuentres rápido amiga... 😿🙏")
-review5 = Review.create!(post_id: post5.id, user_id: user2.id,  content: "Hola, ese peludito es mío, a que número me puedo contactar contigo?, estamos desesperados!!! 😓")
