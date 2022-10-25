@@ -2,6 +2,7 @@
   padding:40px 0;
   background-color: #02bbb5;
   color:#fffefe;
+
 }
 
 .footer-basic ul {
@@ -56,4 +57,8 @@
   font-size:13px;
   color:rgb(245, 239, 239);
   margin-bottom:0;
+}
+
+.allButFooter {
+  min-height: calc(17.2vh - 40px);
 }
