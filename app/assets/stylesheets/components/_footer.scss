@@ -2,6 +2,7 @@
   padding:40px 0;
   background-color: #02bbb5;
   color:#fffefe;
+
 }
 
 .footer-basic ul {
@@ -58,6 +59,6 @@
   margin-bottom:0;
 }
 
-.publicaciones{
-  height: 63.2vh;
+.allButFooter {
+  min-height: calc(17.2vh - 40px);
 }

@@ -6,24 +6,29 @@
       <h4 class="card-title text-center" id="titulo"> <%= @post.title %> </h4>
         <div>
           <% @post.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 400, width: 500, class:"card-img-top mb-3" , crop: :fill %>
+            <%= cl_image_tag photo.key, height: 400, width: 500, class:"card-img-top mb-3" , crop: :fill %>
           <% end %>
+        </div>
+        <div class="d-block fs-4">
+           <strong> <%= @post.post_type ? 'Perdido' : 'Encontrado' %> </strong>
         </div>
         <div class="d-block fs-4">
           <strong> <%= "Dirección:" %> </strong> <%= @post.address %>
         </div>
         <div class="d-block fs-4">
-          <strong> <%= "descripción:" %> </strong> <%= @post.description %>
+          <strong> <%= "Descripción:" %> </strong> <%= @post.description %>
         </div>
         <div class="d-block fs-4">
-          <strong> <%= "Recompensa:" %> </strong> <%= @post.reward ? 'Si' : 'No' %>
+          <% if @post.post_type == true %>
+            <strong> <%= "Recompensa:" %> </strong> <%= @post.reward ? 'Si' : 'No' %>
+          <% end %>
         </div>
         <div class="d-block fs-4">
           <strong> <%= "Estado:" %> </strong> <%= @post.status %>
         </div>
         <br>
 
-        <div class="map d-flex" id='map' style="width: 100%; height: 150px;"
+        <div class="map d-flex" id='map' style="width: 100%; height: 300px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
