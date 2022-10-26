@@ -6,7 +6,7 @@
       <h4 class="card-title text-center" id="titulo"> <%= @post.title %> </h4>
         <div>
           <% @post.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 400, width: 500, class:"card-img-top mb-3" , crop: :fill %>
+            <%= cl_image_tag photo.key, height: 400, width: 500, class:"card-img-top mb-3" , crop: :fill %>
           <% end %>
         </div>
         <div class="d-block fs-4">
