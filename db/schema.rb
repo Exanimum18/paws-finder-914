@@ -63,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_184329) do
     t.float "latitude"
     t.float "longitude"
     t.boolean "post_type"
-    t.string "status"
+    t.string "status", default: "Pendiente"
     t.boolean "reward"
     t.bigint "user_id", null: false
     t.bigint "animal_id", null: false
