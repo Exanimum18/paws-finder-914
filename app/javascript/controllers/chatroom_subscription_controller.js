@@ -5,6 +5,7 @@ import { createConsumer } from "@rails/actioncable"
 export default class extends Controller {
   static values = { chatroomId: Number }
   static targets = ["messages"]
+  static values = { chatroomId: Number, currentUserId: Number }
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
