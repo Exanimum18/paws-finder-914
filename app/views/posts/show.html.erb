@@ -1,7 +1,7 @@
 <div class="container ">
   <div class="row justify-content-center">
 
-    <div class="card  shadow p-3 mb-5 bg-white rounded" style="width: 35rem;">
+    <div class="card shadow mb-5 bg-white rounded" style="width: 35rem;">
       <div class="card-body ">
       <h4 class="card-title text-center" id="titulo"> <%= @post.title %> </h4>
         <div>
@@ -37,8 +37,8 @@
         <div class="d-flex justify-content-center mb-3">
           <% if current_user.present? %>
             <% if current_user.id == @post.user_id %>
-              <%= button_to "Borrar", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
-              <%= link_to "Editar", edit_post_path(@post), class: "btn btn-flat m-1" %>
+              <%= button_to "", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "fa-regular fa-trash-can m-3", id: "delete-buttom" %>
+              <%= link_to "", edit_post_path(@post), class: "fa-solid fa-pen-to-square m-3", id: "edit-buttom" %>
             <% end %>
           <% end %>
         </div>
@@ -59,8 +59,8 @@
           <div class="d-flex">
             <% if current_user.present? %>
               <% if current_user == review.user %>
-                <span id= "btn-<%= review.id %>">  <%= link_to "Editar", post_review_path(review), class: 'btn btn-danger m-1 ', onclick: "showContent()" %> </span>
-                <%= button_to "Borrar", review_path(review), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger m-1" %>
+                <span id= "btn-<%= review.id %>">  <%= link_to "", post_review_path(review), class: 'fa-solid fa-pen-to-square m-1 ', id: "edit-buttom-comments", onclick: "showContent()" %> </span>
+                <%= button_to "", review_path(review), data: { confirm: "Are you sure?" }, method: :delete, class: "fa-regular fa-trash-can m-1", id: "delete-buttom-comments" %>
               <% end %>
             <% end %>
           </div>
@@ -79,7 +79,7 @@
         <h5>Agrega tu comentario</h5>
         <%= simple_form_for [@post, @review] do |f| %>
           <%= f.input :content,placeholder: "Agrega tu comentario aquí...", label: "Comentario" %>
-          <%= f.submit class: "btn btn-danger", label: "Crear reseña" %>
+          <%= f.submit class: "btn btn-danger", label: "Comentar" %>
         <% end %>
       </div>
     </div>
