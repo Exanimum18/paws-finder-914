@@ -23,7 +23,7 @@ h2 {
   text-align: center;
   line-height: 1.4;
   margin-bottom: 10px;
-  
+
 }
 
 /* BASIC SETUP */
@@ -36,6 +36,7 @@ h2 {
   	-webkit-animation: gradbar 15s ease infinite;
 	-moz-animation: gradbar 15s ease infinite;
 	animation: gradbar 15s ease infinite;
+  flex-grow: 1;
 }
 
 /* NAVIGATION */
@@ -71,15 +72,16 @@ h2 {
 
 .navbar-lewagon {
   background: white;
+  justify-content: space-between;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
 
 
 /* SECTIONS */
