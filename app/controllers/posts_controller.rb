@@ -24,7 +24,7 @@ class PostsController < ApplicationController
          lng: post.longitude,
          info_window: render_to_string(partial: "info_window", locals: {post: post}),
          image_url: helpers.asset_url("logo.png")
-       }
+      }
      end
   end
 
