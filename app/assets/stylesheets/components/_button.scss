@@ -11,6 +11,8 @@
 //   color: white;
 // }
 
+
+
 .slider.round {
   border-radius: 34px;
 }
@@ -37,7 +39,7 @@
   border-style: none;
   background: none;
   text-decoration: none;
-  color: #e02d47;
+  color: #e02d47 ;
   font-size: 20px;
 }
 
@@ -45,4 +47,17 @@
   text-decoration: none;
   color: #02bbb5;
   font-size: 20px;
+}
+
+.btn-red {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #e02d47;
+  transition: background 0.3s ease;
+}
+
+.btn-danger:hover {
+  background: white;
+  color: black;
 }
