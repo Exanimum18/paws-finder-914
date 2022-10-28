@@ -4,7 +4,7 @@
       <div class="bg-white rounded p-3 shadow">
         <h2  class="text-center">Publica un peludo</h2>
         <%= simple_form_for @post do |f| %>
-          #perdido = true encontrado = false
+         <!-- #perdido = true encontrado = false-->
           <%= f.input :post_type, label:"Encontrado - Perdido" %>
           <%= f.input :title, label: "Nombre de la publicación:" %>
           <%= f.input :address, label: "Dirección donde se vió el peludo:",
@@ -16,7 +16,7 @@
           <%= f.input :reward, label: "Recompensa",
             input_html: { autocomplete: "Recompensa?" }%>
           <%= f.input :photos,label:"Fotos actualizadas del peludo", as: :file, input_html: {multiple: true} %>
-         <div class="text-center"> <%= f.button :submit, "Crear publicación", class: 'btn btn-danger ' %> </div>
+         <div class="text-center"> <%= f.button :submit, "Crear publicación", class: 'btn btn-red ' %> </div>
         <% end %>
       </div>
     </div>
