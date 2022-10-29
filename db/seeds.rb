@@ -76,8 +76,11 @@ post5.photos.attach(io: animal_photo5, filename: "perro2.png", content_type: "im
 post5.save
 
 puts "Creando reviews..."
-review = Review.create!(post_id: post.id, user_id: user.id , content: "Estoy sumamente agradecida con la comunidad en Paws finder por ayudarme a encontrar a Dolly")
-review1 = Review.create!(post_id: post1.id, user_id: user1.id , content: "Cuando mi gatito se perdió hace unos días estabamos muy angustiados sin saber que hacer, dimos por casualidad con ésta página y luego de unos días vimos fotos de nuestro bebe en el barrio contiguo")
-review2 = Review.create!(post_id: post2.id , user_id: user2.id , content: "Tengo un centro de rescate animal, encontramos uno con esa descripción, creo que deberian venir a verlo")
-review3 = Review.create!(post_id: post3.id , user_id: user3.id , content: "Hola, creo que he visto a ese perrito en el granero el parquesito, frente al parque Belén San Bernardo")
-review4 = Review.create!(post_id: post4.id , user_id: user3.id, content: "Ay!!!, espero que la encuentres rápido amiga... 😿🙏")
+review = Review.create!(post_id: post.id, user_id: user.id, content: "Estoy sumamente agradecida con la comunidad en Paws finder por ayudarme a encontrar a Dolly")
+review1 = Review.create!(post_id: post1.id, user_id: user1.id, content: "Cuando mi gatito se perdió hace unos días estabamos muy angustiados sin saber que hacer, dimos por casualidad con ésta página y luego de unos días vimos fotos de nuestro bebe en el barrio contiguo")
+review2 = Review.create!(post_id: post2.id, user_id: user2.id, content: "Tengo un centro de rescate animal, encontramos uno con esa descripción, creo que deberian venir a verlo")
+review3 = Review.create!(post_id: post3.id, user_id: user3.id, content: "Hola, creo que he visto a ese perrito en el granero el parquesito, frente al parque Belén San Bernardo")
+review4 = Review.create!(post_id: post4.id, user_id: user3.id, content: "Ay!!!, espero que la encuentres rápido amiga... 😿🙏")
+
+puts "Creando Chats..."
+Chatroom.create!(name: "General")
