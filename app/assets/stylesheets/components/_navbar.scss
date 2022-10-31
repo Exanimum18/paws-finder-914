@@ -48,11 +48,24 @@ h2 {
   padding-right: 15px;
 }
 
-.navbar img {
+// .navbar img {
+//   height: 35px;
+//   width: auto;
+//   justify-self: start;
+//   margin-left: 20px;
+// }
+
+.logo-img {
   height: 35px;
   width: auto;
   justify-self: start;
   margin-left: 20px;
+}
+
+.avatar-img {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
 }
 
 .navbar ul {
