@@ -1,47 +1,48 @@
-<div class="grad-bar"></div>
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon border-bottom">
-    <div class="container-fluid">
-      <%= link_to "/", class: "" do %>
+
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon border-bottom border-top  fixed-top me-auto ">
+  <div class="container-fluid justify-content-between d-flex">
+   <!--<div class="grad-bar"></div>-->
+      <%= link_to "/", class: "brand" do %>
         <%= image_tag "https://i.gyazo.com/bd43a4e19de6136c4ad85f62692d448f.jpg" %>
       <% end %>
 
-    <div class=" container col-4 text-center ">
-      <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Busca a tu peludito"%>
-        <%= submit_tag "Buscar", class: "btn btn-flat" %>
-      <% end %>
-    </div>
+      <div class=" container col-4 text-center ">
+        <%= form_with url: posts_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Busca a tu peludito"%>
+          <%= submit_tag "Buscar", class: "btn btn-flat" %>
+        <% end %>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Inicio", "/", class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Mis publicaciones", mis_publicaciones_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Chat", chatroom_path(Chatroom.first), class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Editar mi contraseña", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Salir", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Inicia Sesión", new_user_session_path, class: "nav-link" %>
-          </li>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Publicar", new_post_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Mis publicaciones", mis_publicaciones_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Chat", chatroom_path(Chatroom.first), class: "nav-link" %>
+            </li>
+            <li class="nav-item dropdown">
+              <%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Editar mi contraseña", edit_user_registration_path, class: "dropdown-item" %>
+                <%= link_to "Salir", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Inicia Sesión", new_user_session_path, class: "nav-link" %>
+            </li>
           <% end %>
         </ul>
       </div>
