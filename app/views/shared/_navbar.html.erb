@@ -1,9 +1,8 @@
 
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon border-bottom border-top  fixed-top me-auto ">
-
   <div class="container-fluid justify-content-between d-flex">
-  <!--<div class="grad-bar"></div>-->
+   <!--<div class="grad-bar"></div>-->
       <%= link_to "/", class: "brand" do %>
         <%= image_tag "https://i.gyazo.com/bd43a4e19de6136c4ad85f62692d448f.jpg" %>
       <% end %>
@@ -34,7 +33,7 @@
               <%= link_to "Chat", chatroom_path(Chatroom.first), class: "nav-link" %>
             </li>
             <li class="nav-item dropdown">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Editar mi contraseña", edit_user_registration_path, class: "dropdown-item" %>
                 <%= link_to "Salir", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
@@ -44,11 +43,9 @@
             <li class="nav-item">
               <%= link_to "Inicia Sesión", new_user_session_path, class: "nav-link" %>
             </li>
-
           <% end %>
         </ul>
       </div>
-
   </div>
 </div>
 
