@@ -40,6 +40,7 @@
               <%= link_to "", edit_post_path(@post), class: "fa-solid fa-pen-to-square m-3", id: "edit-buttom" %>
               <%= button_to "", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "fa-regular fa-trash-can m-3", id: "delete-buttom" %>
             <% end %>
+            <%= link_to "", chatroom_path(Chatroom.first), class: "fa-regular fa-comments m-3", id: "chat-buttom" %>
           <% end %>
         </div>
       </div>

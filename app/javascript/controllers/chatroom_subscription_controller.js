@@ -5,7 +5,7 @@ import { createConsumer } from "@rails/actioncable"
 export default class extends Controller {
   static values = { chatroomId: Number }
   static targets = ["messages"]
-  static values = { chatroomId: Number, currentUserId: Number }
+  static values = { chatroomId: Number, currentUserId: Number, cloudinaryUrl: Number }
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -21,15 +21,17 @@ export default class extends Controller {
     }
 
   #insertMessageAndScrollDown(data) {
+    const cloudinaryUrlSender = this.cloudinaryUrl
     const currentUserIsSender = this.currentUserIdValue === data.sender_id
-    const messageElement = this.#buildMessageElement(currentUserIsSender, data.message)
+    const messageElement = this.#buildMessageElement(currentUserIsSender, data.message, cloudinaryUrlSender)
     this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
-  #buildMessageElement(currentUserIsSender, message) {
+  #buildMessageElement(currentUserIsSender, message, cloudinaryUrlSender) {
     return `
       <div class="message-row d-flex ${this.#justifyClass(currentUserIsSender)}">
+        <img src="${cloudinaryUrlSender}">
         <div class="${this.#userStyleClass(currentUserIsSender)}">
           ${message}
         </div>
