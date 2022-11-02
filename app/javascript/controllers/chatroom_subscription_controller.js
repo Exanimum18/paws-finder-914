@@ -5,33 +5,31 @@ import { createConsumer } from "@rails/actioncable"
 export default class extends Controller {
   static values = { chatroomId: Number }
   static targets = ["messages"]
-  static values = { chatroomId: Number, currentUserId: Number, cloudinaryUrl: Number }
+  static values = { chatroomId: Number, currentUserId: Number}
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       { received: data => this.#insertMessageAndScrollDown(data) }
       )
-      console.log(`Subscribed to the chatroom with the id ${this.chatroomIdValue}.`)
+      // console.log(`Subscribed to the chatroom with the id ${this.chatroomIdValue}.`)
     }
 
     disconnect() {
-      console.log("Unsubscribed from the chatroom")
+      // console.log("Unsubscribed from the chatroom")
       this.channel.unsubscribe()
     }
 
   #insertMessageAndScrollDown(data) {
-    const cloudinaryUrlSender = this.cloudinaryUrl
     const currentUserIsSender = this.currentUserIdValue === data.sender_id
-    const messageElement = this.#buildMessageElement(currentUserIsSender, data.message, cloudinaryUrlSender)
+    const messageElement = this.#buildMessageElement(currentUserIsSender, data.message)
     this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
-  #buildMessageElement(currentUserIsSender, message, cloudinaryUrlSender) {
+  #buildMessageElement(currentUserIsSender, message) {
     return `
       <div class="message-row d-flex ${this.#justifyClass(currentUserIsSender)}">
-        <img src="${cloudinaryUrlSender}">
         <div class="${this.#userStyleClass(currentUserIsSender)}">
           ${message}
         </div>
@@ -49,5 +47,6 @@ export default class extends Controller {
 
   resetForm(event) {
     event.target.reset()
+    // window.location.reload()
   }
 }
