@@ -16,16 +16,22 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post_id = @post.id
     @review = Review.new
-    @posts = Post.all
-    @markers = @posts.geocoded.map do |post|
+    @posts = Post.geocoded
+    @markers = @posts.map do |post|
+      if post.id == @post_id
+        photo = "logo.png"
+      else
+        photo = "Simbolo-patitas.png"
+      end
       {
-         lat: post.latitude,
-         lng: post.longitude,
-         info_window: render_to_string(partial: "info_window", locals: {post: post}),
-         image_url: helpers.asset_url("logo.png")
+        lat: post.latitude,
+        lng: post.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { post: post }),
+        image_url: helpers.asset_url(photo)
       }
-     end
+    end
   end
 
   def create
