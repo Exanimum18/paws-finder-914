@@ -1,32 +1,47 @@
+<div class=" banner-image mb-1">
 
-<div class="container">
+</div>
+<div class="container d-flex justify-content-center">
   <div>
-    <div class="shadow p-3 mb-5 bg-white rounded">
-      <h3 class="text-center mt-5 azul" id="titulo"> Para todos los peludos que necesiten volver a casa, perdidos o encontrados </h3>
 
-      <div class=" text-center m-3">
-          <%= link_to "Publica tu peludo", new_post_path, class: "btn btn-red" %>
-      </div>
+
+    <div class="container shadow p-3 mb-5 bg-white rounded " style="height: 220px; background-color: #d1fffd">
+      <h3 class="text-center mt-5 azul " id="titulo"> Para todos los peludos que necesiten volver a casa, perdidos o encontrados </h3>
+      <div class= "row d-flex ">
+        <div class="col text-center m-3  d-flex justify-content-center">
+            <%= link_to "Busco a mi peludo", new_post_path, class: "btn btn-red" %>
+        </div>
+        <div class="col text-center m-3 d-flex justify-content-center">
+            <%= link_to "Encontré un peludo", new_post_path, class: "btn btn-red" %>
+        </div>
     </div>
-    <br>
+
+  </div>
+
     <br>
     <h1 class="text-center rojo mb-5" id="titulo"> Estos peludos buscan su casa </h1>
-    <div class="row justify-content-around ">
+    <div class="row justify-content-between ">
         <% @posts.each do |post| %>
-        <div class="col-lg-4 m-3">
-          <div class="card shadow mb-5 bg-white rounded text-center d-flex justify-content-between" style="width: 400px ">
+        <div class="col-sm-4 justify-content-between  ">
+          <div class="card shadow mb-5 bg-white rounded text-center d-flex rounded-3  mt-5 pb-5" style="width: 300px" >
             <% if post.photos.attached?%>
                 <%= link_to post_path(post) do %>
-                  <%= cl_image_tag post.photos.first.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+                  <%= cl_image_tag post.photos.first.key, height: 225, width: 300, crop: :fill, class: "card-img-top" %>
                 <% end %>
             <% end %>
-
-            <h5 class="card-title mt-3" id="titulo"> <%= post.title %> </h5>
+            <center><span class=" text-center position-absolute top-95 start-50 translate-middle ">
+            <% if post.post_type == true %>
+            <p class="tag tag-red">  <%= 'Perdido' %> </p>
+            <%else %>
+            <p class="tag tag-blue"> <%= 'Encontrado' %> </p>
+            <% end %>
+            </center>
+            <span class="undecorated-link">
+              <%= link_to post_path(post) do %>
+              <h5 class="card-title text-dark mt-3" id="titulo-card" > <%= post.title %> </h5>
+            <% end %>
             <p> <%= post.address %> </p>
-            <p> <%= post.description %> </p>
-            <p> <%= post.post_type ? 'Perdido' : 'Encontrado' %>  </p>
-            <p> <%=post.reward ?  'Se ofrece recompensa' : '' %> </p>
-
+            </span>
           </div>
         </div>
         <% end %>
