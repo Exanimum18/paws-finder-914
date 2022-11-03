@@ -20,12 +20,12 @@ class PostsController < ApplicationController
     @posts = Posts.all
     @markers = @posts.geocoded.map do |post|
       {
-         lat: post.latitude,
-         lng: post.longitude,
-         info_window: render_to_string(partial: "info_window", locals: {post: post}),
-         image_url: helpers.asset_url("logo.png")
+        lat: post.latitude,
+        lng: post.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {post: post}),
+        image_url: helpers.asset_url("logo.png")
       }
-     end
+    end
   end
 
   def create
