@@ -6,7 +6,7 @@
         <%= simple_form_for @post do |f| %>
          <!-- #perdido = true encontrado = false-->
           <%= f.label(:post_type, "Encontrado") %>
-          <%= f.radio_button(:post_type, "Encontrado") %>
+          <%= f.radio_button(:post_type, "Encontrado")%>
           <%= f.label(:post_type, "Perdido") %>
           <%= f.radio_button(:post_type, "Perdido")%>
           <%= f.input :title, label: "Nombre de la publicación:" %>
