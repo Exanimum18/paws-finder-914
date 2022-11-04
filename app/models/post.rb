@@ -31,4 +31,6 @@ class Post < ApplicationRecord
   using: {
   tsearch: { prefix: true }
   }
+
+  validates :address, :description, :title, :photos, presence: true
 end
