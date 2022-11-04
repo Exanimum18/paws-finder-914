@@ -9,10 +9,10 @@
       <h3 class="text-center mt-5 azul " id="titulo"> Para todos los peludos que necesiten volver a casa, perdidos o encontrados </h3>
       <div class= "row d-flex ">
         <div class="col text-center m-3  d-flex justify-content-center">
-            <%= link_to "Busco a mi peludo", new_post_path, class: "btn btn-red" %>
+            <%= link_to "Busco a mi peludo", new_post_path(:option => "perdido"), class: "btn btn-red" %>
         </div>
         <div class="col text-center m-3 d-flex justify-content-center">
-            <%= link_to "Encontré un peludo", new_post_path, class: "btn btn-red" %>
+            <%= link_to "Encontré un peludo", new_post_path(:option => "encontrado"), class: "btn btn-red" %>
         </div>
     </div>
 
