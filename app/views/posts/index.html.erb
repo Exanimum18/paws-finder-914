@@ -22,7 +22,7 @@
     <h1 class="text-center rojo mb-5" id="titulo"> Estos peludos buscan su casa </h1>
     <div class="row ">
         <% @posts.each do |post| %>
-        <div class="col-sm-4  d-flex justify-content-around">
+        <div class="col-sm-4  d-flex justify-content-around ">
           <div class="card shadow mb-5 bg-white rounded text-center d-flex rounded-5 pb-5 cards" style="width: 300px" >
             <% if post.photos.attached?%>
                 <%= link_to post_path(post) do %>
