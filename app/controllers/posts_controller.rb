@@ -17,15 +17,25 @@ class PostsController < ApplicationController
 
   def show
     @review = Review.new
-    @posts = Post.all
-    @markers = @posts.geocoded.map do |post|
-      {
-        lat: post.latitude,
-        lng: post.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {post: post}),
-        image_url: helpers.asset_url("logo.png")
-      }
-    end
+    @markers = {
+      lat: @post.latitude,
+      lng: @post.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { post: @post }),
+      image_url: helpers.asset_url("Simbolo-patitas.png")
+    }
+    # @post_id = @post.id
+    # @posts = Post.geocoded
+    # @markers = @posts.map do |post|
+    #   if post.id == @post_id
+    #     photo = "logo.png"
+    #   else
+    #     photo = "Simbolo-patitas.png"
+    #   end
+    #   {
+    #     lat: post.latitude,
+    #     lng: post.longitude,
+    #   }
+    # end
   end
 
   def create
@@ -66,6 +76,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :address, :description, :reward, :animal_id, photos: [] )
+    params.require(:post).permit(:title, :address, :description, :reward, :animal_id, :post_type, photos: [])
   end
 end
