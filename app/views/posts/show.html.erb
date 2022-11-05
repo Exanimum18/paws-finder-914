@@ -1,11 +1,12 @@
 <div class="container">
-  <div class="d-flex justify-content-center">
+  <div class="justify-content-center">
 
     <div class="card shadow mb-5 bg-white rounded " style="width: 100%;">
       <div class="card-body d-flex">
           <div class="imagen  mb-5 bg-white rounded p-4">
             <div>
-                <div class="carousel slide" data-ride="carousel">
+
+              <div class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#img1" data-slide-to="0" class="active"></li>
                   <li data-target="#img2" data-slide-to="1"></li>
@@ -23,7 +24,7 @@
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
                 </a>
-               <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
@@ -40,26 +41,26 @@
             </div>
             <div class="d-block fs-4">
              <strong> <%= "Dirección:" %> </strong> <%= @post.address %>
-           </div>
+            </div>
             <div class="d-block fs-4">
             <strong> <%= "Descripción:" %> </strong> <%= @post.description %>
-           </div>
+            </div>
             <div class="d-block fs-4">
              <% if @post.post_type == true %>
                <strong> <%= "Recompensa:" %> </strong> <%= @post.reward ? 'Si' : 'No' %>
              <% end %>
-           </div>
+            </div>
             <div class="d-block fs-4">
              <strong> <%= "Estado:" %> </strong> <%= @post.status %>
             </div>
-        <div class="d-flex justify-content-center mb-3">
-          <% if current_user.present? %>
-            <% if current_user.id == @post.user_id %>
-              <%= link_to "", edit_post_path(@post), class: "fa-solid fa-pen-to-square m-3", id: "edit-buttom" %>
-              <%= button_to "", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "fa-regular fa-trash-can m-3", id: "delete-buttom" %>
+          <div class="d-flex justify-content-center mb-3">
+            <% if current_user.present? %>
+             <% if current_user.id == @post.user_id %>
+                <%= link_to "", edit_post_path(@post), class: "fa-solid fa-pen-to-square m-3", id: "edit-buttom" %>
+                <%= button_to "", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "fa-regular fa-trash-can m-3", id: "delete-buttom" %>
+             <% end %>
+             <%= link_to "", chatroom_path(Chatroom.first), class: "fa-regular fa-comments m-3", id: "chat-buttom" %>
             <% end %>
-            <%= link_to "", chatroom_path(Chatroom.first), class: "fa-regular fa-comments m-3", id: "chat-buttom" %>
-          <% end %>
             <br>
 
             <div class="map d-flex" id='map' style="width: 100%; height: 300px;"
@@ -68,9 +69,10 @@
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
             ></div>
           </div>
-        </div>
       </div>
     </div>
+
+
 
     <div class="row mt-5 mr-1">
       <div class="col-12 col-sm-6">
