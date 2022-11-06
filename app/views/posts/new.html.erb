@@ -1,8 +1,8 @@
-<div class="container py-5 ">
-  <div class="row ">
+<div class="container py-5 mt-5 ">
+  <div class="row background-chat  ">
     <div class=" col-12 col-md-6 offset-lg-3 ">
-      <div class=" rounded p-3 shadow blue-background ">
-        <h2  class="text-center mb-3">Publica un peludo <%= params[:option] %> </h2>
+      <div class=" rounded p-3 shadow  background-form">
+        <h2  class="text-center mb-3" id="titulo">Publica un peludo <%= params[:option] %> </h2>
         <%= simple_form_for @post do |f| %>
          <!-- #perdido = true encontrado = false-->
           <%#= f.label(:post_type, "Encontrado") %>
