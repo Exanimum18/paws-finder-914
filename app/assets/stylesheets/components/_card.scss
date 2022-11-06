@@ -10,7 +10,14 @@
 }
 .cards {
   height: 350px;
+  transition: 0.5s ease;
+  cursor: pointer;
 }
+.cards:hover {
+  transform: scale(1.2);
+  box-shadow: rgba(0,0,0,0.6);
+}
+
 
 h2 {
   font-family: 'Fuzzy Bubbles';
@@ -49,4 +56,56 @@ h2 {
  a:hover{
   text-decoration: none;
   }
+}
+
+.cards-publicaciones {
+  display: grid;
+  grid-template-columns: 300px;
+  grid-template-rows: 250px 210px 25px;
+  grid-template-areas: "image" "text" "stats";
+  border-radius: 18px;
+  background: white;
+  box-shadow: 5p 5px 15px rgba(0,0,0,0.9);
+  text-align: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transition: 0.5s ease;
+  cursor: pointer;
+
+}
+
+.cards-publicaciones-image{
+  grid-area: image;
+}
+
+.cards-publicaciones-text{
+  grid-area: text;
+}
+
+.cards-publicaciones-stats{
+  grid-area: stats;
+}
+
+.card-stats {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  grid-template-rows: 1fr;
+  width: 333px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+ .card-stats .stat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  padding: 5px;
+}
+
+.cards-publicaciones:hover{
+  transform: scale(0.90);
+  box-shadow: rgba(0,0,0,0.6);
 }
