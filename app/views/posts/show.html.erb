@@ -1,21 +1,20 @@
-<div class="container">
-  <div class="d-flex justify-content-center">
+  <head>
+    <script src="https://kit.fontawesome.com/44d4a8fc4e.js" crossorigin="anonymous"></script>
 
-    <div class="card shadow mb-5 bg-white rounded " style="width: 100%;">
+  </head>
+  <div class="justify-content-center">
+    <div class="card mb-5 bg-white rounded " style="width: 100%;">
       <div class="card-body d-flex">
-          <div class="imagen  mb-5 bg-white rounded p-4">
+          <div class="imagen shadow  col-md-4 offset-md-1  bg-white rounded-4 p-4 ">
+
             <div>
-                <div class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#img1" data-slide-to="0" class="active"></li>
-                  <li data-target="#img2" data-slide-to="1"></li>
-                  <li data-target="#img3" data-slide-to="2"></li>
-                </ol>
+
+              <div id= "carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <% @post.photos.each_with_index do |photo, index| %>
                   <div class="carousel-item <%= "active" if  index == 0 %>">
                       <%#= cl_image_tag photo.key, height: 400, width: 500, class:"card-img-top mb-3" , crop: :fill %>
-                      <img class="d-block w-100" src="<%=photo.url%>" alt="slide">
+                      <img id="img-car" class=" w-100" src="<%=photo.url%>" alt="slide">
                   </div>
                   <% end %>
                 </div>
@@ -23,51 +22,81 @@
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
                 </a>
-               <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
               </div>
+                <br>
+                <div>
+                  <div id='map' style='w-100; height: 300px;'
+                  data-controller="map" data-map-marker-value="<%=@markers.to_json%>"
+                  ></div>
+                </div>
+
+            </div>
+            <br>
+            <div class="d-flex justify-content-center mb-3">
+              <% if current_user.present? %>
+                <% if current_user.id == @post.user_id %>
+                  <%= link_to "", edit_post_path(@post), class: "fa-solid fa-pen-to-square m-3", id: "edit-buttom" %>
+                  <%= button_to "", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "fa-regular fa-trash-can m-3", id: "delete-buttom" %>
+                <% end %>
+              <% end %>
+              <br>
             </div>
           </div>
-          <div class="card info  mb-5 bg-white rounded p-3">
+          <div  class="card-info  shadow  mb-5 bg- rounded-4 p-5 col-md-5 offset-md-1 ">
             <div class="d-block fs-4">
               <h4 class="card-title text-center" id="titulo"> <%= @post.title %> </h4>
             </div>
 
+            <center>
+            <span class=" text-center position-absolute top-95 start-50 translate-middle ">
+            <% if @post.post_type == true %>
+            <p class="tag tag-red">  <%= 'Perdido' %> </p>
+            <%else %>
+            <p class="tag tag-blue"> <%= 'Encontrado' %> </p>
+            <% end %>
+            </span>
+            </center>
+            <br>
             <div class="d-block fs-4">
-             <strong> <%= @post.post_type ? 'Perdido' : 'Encontrado' %> </strong>
+              <i class="fa-solid fa-magnifying-glass-location"></i>
+             <strong> <%= "Dirección:" %> </strong> <%= @post.address %>
             </div>
             <div class="d-block fs-4">
-             <strong> <%= "Dirección:" %> </strong> <%= @post.address %>
-           </div>
-            <div class="d-block fs-4">
+            <i class="fa-solid fa-paw"></i>
             <strong> <%= "Descripción:" %> </strong> <%= @post.description %>
-           </div>
+            </div>
             <div class="d-block fs-4">
+              <i class="fa-solid fa-coins"></i>
              <% if @post.post_type == true %>
                <strong> <%= "Recompensa:" %> </strong> <%= @post.reward ? 'Si' : 'No' %>
              <% end %>
-           </div>
+            </div>
             <div class="d-block fs-4">
+              <i class="fa-regular fa-paper-plane"></i>
              <strong> <%= "Estado:" %> </strong> <%= @post.status %>
             </div>
-        <div class="d-flex justify-content-center mb-3">
-          <% if current_user.present? %>
-            <% if current_user.id == @post.user_id %>
-              <%= link_to "", edit_post_path(@post), class: "fa-solid fa-pen-to-square m-3", id: "edit-buttom" %>
-              <%= button_to "", post_path(@post), data: { confirm: "Are you sure?" }, method: :delete, class: "fa-regular fa-trash-can m-3", id: "delete-buttom" %>
-            <% end %>
-            <%= link_to "", chatroom_path(Chatroom.first), class: "fa-regular fa-comments m-3", id: "chat-buttom" %>
-          <% end %>
-            <br>
+            <br >
+            <div class="d-flex justify-content-star mb-3">
+              <% if current_user.present? %>
+                <%= link_to "", chatroom_path(Chatroom.first), class: "fa-regular fa-comments m-3", id: "chat-buttom" %>
+              <% end %>
+              <h4>Iniciar chat con el autor de la publicación</h3>
+            </div>
+              <br>
+              <div class="d-flex justify-content-star  ">
+                <div class="bg-white  rounded p-3">
+                  <h5>Comenta y ayuda a que el peludito regrese a su hogar</h5>
+                  <%= simple_form_for [@post, @review] do |f| %>
+                    <%= f.input :content,placeholder: "Agrega tu comentario aquí...", label: "Comentario" %>
+                    <%= f.submit "Comentar", class: "btn btn-danger" %>
+                 <% end %>
+                </div>
+              </div>
 
-            <div id='map' style='width: 400px; height: 300px;'
-            data-controller="map" data-map-marker-value="<%=@markers.to_json%>"
-            ></div>
-
-          </div>
-        </div>
       </div>
     </div>
 
@@ -101,18 +130,7 @@
           <hr>
         <% end %>
     </div>
-
-    <div class="col-12 col-sm-6">
-      <div class="bg-white rounded p-3">
-        <h5>Agrega tu comentario</h5>
-        <%= simple_form_for [@post, @review] do |f| %>
-          <%= f.input :content,placeholder: "Agrega tu comentario aquí...", label: "Comentario" %>
-          <%= f.submit "Comentar", class: "btn btn-danger" %>
-        <% end %>
-      </div>
-    </div>
   </div>
-</div>
 
 <script>
   function showContent() {
