@@ -12,6 +12,12 @@
             <%= f.input :post_type, as: :radio_buttons, :checked => true, wrapper_html: {style: "display: none"} %>
           <% elsif params[:option] == "encontrado" %>
             <%= f.input :post_type, as: :radio_buttons, :checked => false, wrapper_html: {style: "display: none"} %>
+          <% else %>
+            <%#= f.input :post_type, as: :radio_buttons, :checked => false, label: "Encontraste a un peludo?"%>
+            <%= f.label(:post_type, "Encontrado") %>
+            <%= f.radio_button(:post_type, "Encontrado") %>
+            <%= f.label(:post_type, "Perdido") %>
+            <%= f.radio_button(:post_type, "Perdido") %>
           <% end %>
           <%= f.input :title, label: "Nombre de la publicación:" %>
           <%= f.input :address, label: "Dirección donde se vió el peludo:",
