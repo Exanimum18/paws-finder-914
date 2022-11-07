@@ -29,12 +29,14 @@
                   <%= cl_image_tag post.photos.first.key, height: 225, width: 300, crop: :fill, class: "card-img-top rounded" %>
                 <% end %>
               <% end %>
-              <center><span class=" text-center position-absolute top-95 start-50 translate-middle ">
+              <center>
+              <span class=" text-center position-absolute top-95 start-50 translate-middle ">
               <% if post.post_type == true %>
               <p class="tag tag-red">  <%= 'Perdido' %> </p>
               <%else %>
               <p class="tag tag-blue"> <%= 'Encontrado' %> </p>
               <% end %>
+              </span>
               </center>
               <span class="undecorated-link mt-3">
                 <%= link_to post_path(post) do %>
