@@ -87,15 +87,6 @@
               <h4>Iniciar chat con el autor de la publicación</h3>
             </div>
               <br>
-              <div class="d-flex justify-content-star  ">
-                <div class="bg-white  rounded p-3">
-                  <h5>Comenta y ayuda a que el peludito regrese a su hogar</h5>
-                  <%= simple_form_for [@post, @review] do |f| %>
-                    <%= f.input :content,placeholder: "Agrega tu comentario aquí...", label: "Comentario" %>
-                    <%= f.submit "Comentar", class: "btn btn-danger" %>
-                 <% end %>
-                </div>
-              </div>
 
       </div>
     </div>
@@ -129,6 +120,16 @@
           </div>
           <hr>
         <% end %>
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <div class="bg-white rounded p-3">
+        <h5>Agrega tu comentario</h5>
+        <%= simple_form_for [@post, @review] do |f| %>
+          <%= f.input :content,placeholder: "Agrega tu comentario aquí...", label: "Comentario" %>
+          <%= f.submit "Comentar", class: "btn btn-danger" %>
+        <% end %>
+      </div>
     </div>
   </div>
 
