@@ -47,10 +47,8 @@ animal1 = Animal.create!(specie: "Gato")
 puts "Creando posts..."
 post = Post.new(title: "Perro perdido parque Belén", user_id: user.id, animal_id: animal.id, address: "Cl. 25 #73-28", description: "Se me perdio mi perro la noche del 11 de octubre en el parque cerca a la carrera 72 en Belén Sanbernardo.", post_type: true, status: "Perdido", reward: true)
 animal_photo = URI.open("https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
-animal_photo1 = URI.open("https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
 animal_photo2 = URI.open("https://images.pexels.com/photos/1416803/pexels-photo-1416803.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
 post.photos.attach(io: animal_photo, filename: "perro.png", content_type: "img/png")
-post.photos.attach(io: animal_photo1, filename: "perro.png", content_type: "img/png")
 post.photos.attach(io: animal_photo2, filename: "perro.png", content_type: "img/png")
 post.save
 
