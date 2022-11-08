@@ -64,15 +64,15 @@
             </center>
             <br>
            <div class="d-block fs-5 pt-5 pb-3">
-              <i class="fa-regular fa-paper-plane"></i>
-             <strong> <%= "Animal :" %> </strong> <%= @post.animal.specie %>
+              <i class="fa-solid fa-paw"></i>
+             <strong> <%= "Peludo :" %> </strong> <%= @post.animal.specie %>
             </div>
             <div class="d-block fs-5 pb-3 ">
               <i class="fa-solid fa-magnifying-glass-location"></i>
              <strong> <%= "Dirección :" %> </strong> <%= @post.address %>
             </div>
             <div class="d-block fs-5 pb-3">
-            <i class="fa-solid fa-paw"></i>
+            <i class="fa-solid fa-file-lines"></i>
             <strong> <%= "Descripción :" %> </strong> <%= @post.description %>
             </div>
             <div class="d-block fs-5 pb-3">
@@ -95,9 +95,8 @@
             <div class="d-block  text-center  mb-5 blue-background rounded-4 col-4 mt-3">
               <% if current_user.present? %>
                 <%= link_to "", chatroom_path(Chatroom.first), class: "fa-regular fa-comments m-3 justify-content-center", id: "chat-buttom" %>
+                <h5>Iniciar chat</h5>
               <% end %>
-              <br>
-              <h5>Iniciar chat</h5>
             </center>
 
             </div>
