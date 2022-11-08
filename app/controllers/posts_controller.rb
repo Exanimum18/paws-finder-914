@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @animal = Animal.all
     @review = Review.new
     @markers = {
       lat: @post.latitude,
@@ -23,6 +24,7 @@ class PostsController < ApplicationController
       info_window: render_to_string(partial: "info_window", locals: { post: @post }),
       image_url: helpers.asset_url("Simbolo-patitas.png")
     }
+
     # @post_id = @post.id
     # @posts = Post.geocoded
     # @markers = @posts.map do |post|
