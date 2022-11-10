@@ -13,7 +13,7 @@
 #
 class User < ApplicationRecord
   has_many :reviews
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_one_attached :photo
   has_many :messages
   # Include default devise modules. Others available are:
