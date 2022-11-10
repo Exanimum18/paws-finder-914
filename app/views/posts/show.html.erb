@@ -44,15 +44,14 @@
           <div class="d-block fs-3">
             <h4 class="card-title text-center pb-2" id="titulo"> <%= @post.title %> </h4>
           </div>
-          <center>
-            <span class=" text-center position-absolute top-95 start-50 translate-middle  mt-3 mb-5 ">
-            <% if @post.post_type == true %>
-              <p class="tag-show tag-red">  <%= 'Perdido' %> </p>
-            <%else %>
-              <p class="tag-show tag-blue"> <%= 'Encontrado' %> </p>
-            <% end %>
-            </span>
-          </center>
+          <span class=" text-center position-absolute top-95 start-50 translate-middle  mt-3 mb-5 ">
+          <% if @post.post_type == true %>
+            <p class="tag-show tag-red">  <%= 'Perdido' %> </p>
+          <%else %>
+           <p class="tag-show tag-blue"> <%= 'Encontrado' %> </p>
+          <% end %>
+          </span>
+
           <br>
           <div class="d-block fs-5 pt-5 pb-3">
             <i class="fa-solid fa-paw"></i>
@@ -80,21 +79,21 @@
             <i class="fa-regular fa-calendar"></i>
             <strong> <%= "Fecha de creación :" %> </strong> <%= @post.created_at.strftime("  %d/%m/%Y") %>
           </div>
-          <center>
-          <div class="d-block  text-center  mb-5 blue-background rounded-4 col-4 mt-3">
+          <div class="d-flex justify-content-center">
+            <div class="d-block mb-5 blue-background rounded-4 col-4 mt-3  text-center">
             <% if current_user.present? %>
               <%= link_to "", chatroom_path(Chatroom.first), class: "fa-regular fa-comments m-3 justify-content-center", id: "chat-buttom" %>
               <h5>Iniciar chat</h5>
             <% end %>
+            </div>
           </div>
-          </center>
         </div>
       </div>
     </div>
 
     <div class=" container d-flex justify-content-around row  text-center col-12 ml-0 mr-0 border-0">
-      <div class="col-md-4">
-        <h3 class= "text-center p-2">Comentarios</h3>
+      <div class="col-md-4  mx-auto  bg-white rounded-4 pl-5">
+        <h3 class= "text-center pt-5">Comentarios</h3>
         <% if @post.reviews.empty? %>
           <small><em class="text-muted ml-5">Sé el primero en dejar un comentario</em></small>
         <% end %>
@@ -121,9 +120,9 @@
           </div>
         <% end %>
       </div>
-      <div class="col-md-4">
-        <div class="bg-white rounded p-3">
-          <h5>Agrega tu comentario</h5>
+      <div class=" col-md-5 offset-md-1  mx-auto pr-5">
+        <div class="bg-white rounded py-5 pr-5">
+          <h4>Agrega tu comentario</h4>
           <%= simple_form_for [@post, @review] do |f| %>
             <%= f.input :content,placeholder: "Agrega tu comentario aquí...", label: "Comentario", class:"col-4" %>
             <%= f.submit "Comentar", class: "btn btn-danger" %>
