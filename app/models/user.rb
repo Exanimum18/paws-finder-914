@@ -12,10 +12,10 @@
 #  updated_at             :datetime         not null
 #
 class User < ApplicationRecord
-  has_many :reviews
-  has_many :posts
+  has_many :reviews, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_one_attached :photo
-  has_many :messages
+  has_many :messages, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

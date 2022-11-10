@@ -1,6 +1,10 @@
 <div id="message-<%= message.id %>">
   <small>
-    <%= cl_image_tag(message.user.photo.key, class: "avatar-chat") %>
+    <% if message.user.photo.key %>
+      <%= cl_image_tag(message.user.photo.key, class: "avatar-chat") %>
+    <% else %>
+      <%= image_tag("http://www.medqualityassurance.org/views/images/default_user.png", class: "avatar-chat") %>
+    <% end %>
     <strong><%= message.user.email %></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>
