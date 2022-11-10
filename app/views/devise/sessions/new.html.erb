@@ -1,31 +1,26 @@
+<div class="container d-flex justify-content-center ajuste-footer">
+  <div class="user-form background-form mb-5 ">
+    <div>
+      <h2>Iniciar Sesión</h2>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, label: "Correo electrónico",
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :password, label: "Contraseña",
+                      required: false,
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me,label:"Recordarme", as: :boolean if devise_mapping.rememberable? %>
+        </div>
 
-  <div class="container d-flex justify-content-center">
-    <div class="user-form background-form mb-5 ">
-      <div class=" ">
-
-        <h2>Iniciar Sesión</h2>
-
-        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-          <div class="form-inputs">
-            <%= f.input :email, label: "Correo electrónico",
-                        required: false,
-                        autofocus: true,
-                        input_html: { autocomplete: "email" } %>
-            <%= f.input :password, label: "Contraseña",
-                        required: false,
-                        input_html: { autocomplete: "current-password" } %>
-            <%= f.input :remember_me,label:"Recordarme", as: :boolean if devise_mapping.rememberable? %>
+        <div class="btn-group" role="group">
+          <div class="form-actions">
+            <%= f.button :submit, "Iniciar Sesión", class:"btn btn-flat mr-1" %>
           </div>
-
-          <div class="btn-group" role="group">
-            <div class="form-actions">
-              <%= f.button :submit, "Iniciar Sesión", class:"btn btn-flat mr-1" %>
-            </div>
-
-            <%= render "devise/shared/links" %>
-          </div>
-        <% end %>
-
-      </div>
+          <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
     </div>
   </div>
+</div>
