@@ -11,16 +11,16 @@
                 <% @post.photos.each_with_index do |photo, index| %>
                 <div class="carousel-item <%= "active" if  index == 0 %> ">
                     <%#= cl_image_tag photo.key, height: 400, width: 500, class:"card-img-top mb-3" , crop: :fill %>
-                    <img id="img-car" class=" w-100 card-img-top" src="<%=photo.url %>" alt="slide" style='  width: 400px'>
+                    <img id="img-car" class=" w-100 card-img-top " src="<%=photo.url %>" alt="slide" style='  width: 400px'>
                 </div>
                 <% end %>
               </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true" ></span>
                 <span class="sr-only">Anterior</span>
               </a>
               <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
                 <span class="sr-only">Siguiente</span>
               </a>
             </div>
